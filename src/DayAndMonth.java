@@ -10,8 +10,10 @@ public class DayAndMonth {
         int date = keyboard.nextInt();
         System.out.println("What year were you born?");
         int year = keyboard.nextInt();
+        int century = year/100;
+        math();
         }
-    public static void math(int month, int date, int year){
-
+    public static void math(int month, int date, int year,int century){
+        int day = date+((13*(month+1))/5)+year+(year/4)+5-century;
     }
 }
