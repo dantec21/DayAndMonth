@@ -4,177 +4,113 @@ public class DayAndMonth {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Today I am going to tell you what day you were born.");
-        while (1==1) {
+        while (1 == 1) {
             System.out.println("What month were you born? (Enter a number)");
             int month = keyboard.nextInt();
-
-            daysInMonth(month);
+            System.out.println(daysInMonth(month));
             System.out.println("What date of the month were you born?");
             int date = keyboard.nextInt();
             System.out.println("What year were you born?");
             int year = keyboard.nextInt();
-            switch (month){
+            switch (month) {
                 case 1:
                     month = 13;
-                    year = (year-1);
+                    year = (year - 1);
                     break;
-                case 2 :
+                case 2:
                     month = 14;
-                    year = (year-1);
-
-
+                    year = (year - 1);
             }
-            int century = (year / 100);
-            int modYear = (year % 100);
-            int calcDay = (date + ((13 * (month+1) ) / 5) + modYear + (modYear / 4) + (century / 4) - (2 * century) ) % 7;
-            calcDayOfWeek(calcDay);
-            poem(calcDay);
-            }
+            System.out.println(dayOfWeek(year,date,month));
+            System.out.println(poem(dayOfWeek(year,date,month)));
         }
-
-    public static boolean daysInMonth(int month){
-       // System.out.println("Inside of the daysInMonth method");
-
-
+    }
+    public static String daysInMonth(int month) {
         switch (month) {
             case 1:
-                System.out.println("You were born in January");
-                System.out.println("There are 31 days in January");
-                break;
-
-
+               return("There are 31 days in January");
             case 2:
-                System.out.println("You were born in February");
-                System.out.println("Normally there are 28 days in February");
-                break;
-
+                return ("Normally there are 28 days in February");
             case 3:
-                System.out.println("You were born in March");
-                System.out.println("There are 31 days in March");
-                break;
-
+               return  ("There are 31 days in March");
             case 4:
-                System.out.println("You were born in April");
-                System.out.println("There are 30 days in April");
-                break;
-
+               return ("There are 30 days in April");
             case 5:
-                System.out.println("You were born in May");
-                System.out.println("There are 31 days in May");
-                break;
-
+               return ("There are 31 days in May");
             case 6:
-                System.out.println("You were born in June");
-                System.out.println("There are 30 days in June.");
-                break;
-
-
+               return ("There are 30 days in June.");
             case 7:
-                System.out.println("Your were born in July");
-                System.out.println("There are 31 days in July");
-                break;
-
-
+               return ("There are 31 days in July");
             case 8:
-                System.out.println("You were born in August");
-                System.out.println("There are 31 days in August");
-                break;
-
+                return("There are 31 days in August");
             case 9:
-                System.out.println("Your were born in September");
-                System.out.println("There are 30 days in September");
-                break;
-
-
+                return ("There are 30 days in September");
             case 10:
-                System.out.println("You were born in October");
-                System.out.println("There are 31 days in October");
-                break;
-
-
+                return ("There are 31 days in October");
             case 11:
-                System.out.println("You were born in November");
-                System.out.println("There are 30 days in November");
-                break;
-
-
+                return ("There are 30 days in November");
             case 12:
-                System.out.println("You were born in December");
-                System.out.println("There are 31 days in December");
-                break;
+                return ("There are 31 days in December");
+            default:
+                return ("error");
         }
-        return true;
-
     }
-
-
-    public static boolean calcDayOfWeek(int calcDay) {
-
-        switch (calcDay){
+    public static String dayOfWeek(int year, int date, int month){
+        int century = (year / 100);
+        int modYear = (year % 100);
+        int calcDay = (date + ((13 * (month + 1)) / 5) + modYear + (modYear / 4) + (century / 4) - (2 * century)) % 7;
+        switch (calcDay) {
             case 0:
-                System.out.println("You were born on a Saturday");
-                break;
+                return ("You were born on a Saturday");
             case 1:
-                System.out.println("You were born on a Sunday");
-                break;
+                return ("You were born on a Sunday");
             case 2:
-                System.out.println("You were born on a Monday");
-                break;
+                return ("You were born on a Monday");
             case 3:
-                System.out.println("You were born on a Tuesday");
-
-                break;
+                return ("You were born on a Tuesday");
             case 4:
-                System.out.println("You were born on a Wednesday");
-
-                break;
+                return ("You were born on a Wednesday");
             case 5:
-                System.out.println("You were born on a Thursday");
-
-                break;
+                return ("You were born on a Thursday");
             case 6:
-                System.out.println("You were born on a Friday");
-
-                break;
+                return ("You were born on a Friday");
+            default:
+                System.out.println( "error");
         }
-        return true;
-
-
-
+            return "error";
     }
-    public static boolean poem(int calcDay) {
-        if (calcDay == 0) {
-            System.out.println("Saturday's child works hard for a living");
-        }
+        public static String poem (String calcDay){
             switch (calcDay) {
-                case 1:
-                    System.out.println("The child born on the Sabbath Day");
-                    System.out.println("Is fair and wise and good in every way");
-                    break;
+                case "You were born on a Saturday":
+                    return ("Saturday's child works hard for a living");
 
-                case 2:
-                    System.out.println("Monday's child is fair of face");
-                    break;
+                case "You were born on a Sunday":
+                    return ("The child born on the Sabbath Day" +
+                            "Is fair and wise and good in every way");
 
-                case 3:
-                    System.out.println("Tuesday's child is full of grace");
-                    break;
 
-                case 4:
-                    System.out.println("Wednesday's child is full of woe");
-                    break;
+                case"You were born on a Monday" :
+                    return ("Monday's child is fair of face");
 
-                case 5:
-                    System.out.println("Thursday's child has far to go");
-                    break;
 
-                case 6:
-                    System.out.println("Friday's child is loving and giving");
-                    break;
+                case "You were born on a Tuesday":
+                    return ("Tuesday's child is full of grace");
+
+
+                case"You were born on a Wednesday" :
+                    return ("Wednesday's child is full of woe");
+
+
+                case "You were born on a Thursday":
+                    return ("Thursday's child has far to go");
+
+
+                case "You were born on a Friday":
+                    return ("Friday's child is loving and giving");
+
+                    default:
+                    System.out.println("error");
             }
-            return true;
-
+            return "error";
         }
-
-
     }
